@@ -1,0 +1,137 @@
+﻿@Restaurants.API_HostAddress = http://localhost:5006
+@token = CfDJ8CUdWf9c8oNBoS4z4F1BshcmZK7U0I8CeZtsdX4f_QMbYnRbv5HFQzsD20PjrSBGUnGuiwOn4dNqrbGcZPVeqnuDR0cKji03BIc_Bfck3Dw5WEj09pE5NMmFWmGl_HvGZe56fvkUPQPOkhXojZjJcQphFHfclRu2ax9AY47urWRHGkQqbwzLN8aomNDLNjqd5I-gqtMks1AJc-z3-VQVCmJJbGoIf9fC_C-AW32r0d4h4b4vaAzU9RAinySNQg6N2PDGKyA464MVY5uVcqgwnThbmsbyzPz3IGcuBGHplaETcOqtrED3-tB0M2l50WJQkPwp0URkwPCQHTvi-h460TPcQ41UaN0qQJEAIb5lGh7Z-Yngn8ynd5Ft7ihIGuYNz6eTRmlf-HKLKFF84uUtomoXCirudFa9yFEx13nCVUVNlxdm9KHEqUVT-51427z1vIqayXgFoEmRqeLpzHF0aGUUu1N7zmgyjN0TQRU98JFXKcs0Iu_fOwMW71Cjl9ppIF042iOXdhLDjdWmjU9TvDZeCPiv0XfXRll0ZNfehi8gmY64ieckaeYg5B27R8QXYvLWX2V0P5j_qhgZ_UnPewTgB9l498UkoamwSrtLWilowl3lbG96-X0pksvVBR3vnghDjpa-6pD0atk5XMTzr5mwckO2_0yXtJT8seZ05q023rpmC9_n_SdtQi1XRy1QyuUCSC7GqOjLDr2GnOU9y_uf_QDwV6IOzDhZ0HL001hhQxCNFfWQtna0AVl8ZGVhZ-toL49yAX64yKz6FZP54RM
+
+GET {{Restaurants.API_HostAddress}}/api/restaurants?searchPhrase=&pageSize=5&pageNumber=1
+Authorization: Bearer {{token}}
+###
+
+GET {{Restaurants.API_HostAddress}}/api/restaurants/14
+Authorization: Bearer {{token}}
+
+###
+
+POST {{Restaurants.API_HostAddress}}/api/restaurants
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "Name": "Test owner",
+  "Description": "You eat as much as you can2",
+  "Category": "Indian",
+  "HasDelivery": true,
+  "ContactEmail": "test.kebab@x.x",
+  "ContactNumber": "+48123456788",
+  "City": "Poznań",
+  "Street": "Poznańska",
+  "PostalCode": "60-112"
+}
+
+###
+
+POST {{Restaurants.API_HostAddress}}/api/restaurants
+Content-Type: application/json
+
+{
+  "Name": "Te",
+  "Description": null,
+  "Category": null,
+  "HasDelivery": true,
+  "ContactEmail": "test.keba",
+  "ContactNumber": "324s",
+  "City": "Poznań",
+  "Street": "Wrocławska",
+  "PostalCode": "60"
+}
+
+###
+
+DELETE {{Restaurants.API_HostAddress}}/api/restaurants/7
+Authorization: Bearer {{token}}
+###
+
+PATCH {{Restaurants.API_HostAddress}}/api/restaurants/14
+Content-Type: application/json
+Authorization: Bearer {{token}}
+{
+  "name": "Test kebab3",
+  "description": "You eat as much as you can22",
+  "category": "Indian",
+  "hasDelivery": true
+}
+
+###
+
+GET {{Restaurants.API_HostAddress}}/api/restaurants/3/dishes
+
+###
+
+@restaurantId=2
+@dishId=13
+GET {{Restaurants.API_HostAddress}}/api/restaurants/{{restaurantId}}/dishes/{{dishId}}
+
+###
+
+POST {{Restaurants.API_HostAddress}}/api/restaurants/3/dishes
+Content-Type: application/json
+
+{
+    "name": "Chicken Nuggets ultra23",
+    "description": "Chicken Nuggets (4 pcs.)",
+    "price": 10,
+    "kiloCalories": 300
+}
+
+###
+
+PATCH {{Restaurants.API_HostAddress}}/api/restaurants/2/dishes/13
+Content-Type: application/json
+
+{
+    "name": "Chicken Nuggets ultra22",
+    "description": "Chicken Nuggets (4 pcs.) x",
+    "price": 5,
+    "kiloCalories": 290
+}
+
+###
+
+DELETE {{Restaurants.API_HostAddress}}/api/restaurants/2/dishes/12
+
+###
+
+
+DELETE {{Restaurants.API_HostAddress}}/api/restaurants/3/dishes
+
+###
+
+GET {{Restaurants.API_HostAddress}}/api/restaurants?searchPhrase=&pageSize=5&pageNumber=1&sortBy=Name&sortDirection=Descending
+
+###
+
+POST {{Restaurants.API_HostAddress}}/api/identity/register
+Content-Type: application/json
+
+{
+  "email": "user2@xx.xx",
+  "password": "zaq1@WSX"
+}
+
+###
+
+POST {{Restaurants.API_HostAddress}}/api/identity/login
+Content-Type: application/json
+
+{
+  "email": "owner@xx.xx",
+  "password": "zaq1@WSX"
+}
+
+###
+POST {{Restaurants.API_HostAddress}}/api/identity/userRole
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "userEmail": "user2@xx.xx",
+  "roleName": "Owner"
+}

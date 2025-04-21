@@ -44,7 +44,7 @@ jobs:
 
   deploy-prod:
     runs-on: ubuntu-latest
-    needs: build
+    needs: deploy-dev
     steps:
       - name: Download a Build Artifact
         uses: actions/download-artifact@v4.2.1

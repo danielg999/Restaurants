@@ -24,7 +24,8 @@ public static class ServiceCollectionExtensions
         var connectionString = configuration.GetConnectionString("RestaurantDb");
         services.AddDbContext<RestaurantsDbContext>(options => 
             options.UseSqlServer(connectionString)
-                .EnableSensitiveDataLogging());
+                //.EnableSensitiveDataLogging()
+                );
 
         services.AddIdentityApiEndpoints<User>()
             .AddRoles<IdentityRole>()
